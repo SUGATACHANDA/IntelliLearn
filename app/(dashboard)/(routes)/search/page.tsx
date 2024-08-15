@@ -1,0 +1,51 @@
+import { db } from "@/lib/db";
+import Categories from "./_components/categories";
+import SearchInput from "@/components/search-input";
+import { getCourses } from "@/actions/get-courses";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
+import CourseList from "@/components/courses-list";
+
+export const metadata = {
+  title: "Search Courses on IntelliLearn",
+  description: "This is a search page",
+};
+
+interface SearchPageProps {
+  searchParams: {
+    title: string;
+    categoryId: string;
+  };
+}
+const SearchPage = async ({
+  searchParams
+}: SearchPageProps) => {
+  const { userId } = auth()
+  if (!userId) {
+    return redirect("/");
+  }
+  const categories = await db.category.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  });
+
+  const courses = await getCourses({
+    userId,
+    ...searchParams
+  })
+  return (
+    <>
+    <div className="px-6 pt-6 md:hidden md:mb-0 block">
+        <SearchInput />
+    </div>
+      <div className="p-6 space-y-4">
+        <Categories items={categories} />
+        <CourseList items={courses}/>
+      </div>
+      ;
+    </>
+  );
+};
+
+export default SearchPage;
