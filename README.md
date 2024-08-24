@@ -1,3 +1,12 @@
+**Intellilearn**
+A New Way to take your e-learning to next level. Equiped with neumerous courses with detailed chapters which you can complete at your own pace. Includes both free and paid courses.
+Then Why Wait?
+Use IntelliLearn Learn Efficiently
+
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
