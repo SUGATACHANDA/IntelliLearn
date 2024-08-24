@@ -28,6 +28,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
+import { ReactPlayerProps } from "react-player"
 
 interface ChapterVideoFormProps {
   initialData: Chapter & { muxData?: MuxData | null };
@@ -116,7 +117,7 @@ export const ChapterVideoForm = ({
             }}
           />
           <div className="text-xs text-muted-foreground mt-4">
-            Uplod this chapter&apos;s video
+            Upload this chapter&apos;s video
           </div>
         </div>
       )}
